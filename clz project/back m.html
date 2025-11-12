@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Back Calves & Triceps Interactive Trainer</title>
+    <style>
+        body {
+            margin: 0;
+            background: #f6f6f6;
+            font-family: "Segoe UI", sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 500px;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 0.49;
+            user-select: none;
+        }
+
+        .body-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            pointer-events: none;
+        }
+
+        svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        svg path {
+            fill: transparent;
+            cursor: pointer;
+            transition: fill 0.25s ease, opacity 0.25s ease;
+            pointer-events: auto;
+            opacity: 0;
+        }
+
+        svg path.hovered {
+            fill: rgba(255, 40, 0, 0.55);
+            opacity: 1;
+            stroke: rgba(255, 40, 0, 0.55);
+            stroke-width: 1.8;
+        }
+
+        .info-box {
+            background: linear-gradient(180deg, #0f1724, #111827);
+            color: #e6eef8;
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 10px 30px rgba(2, 6, 23, 0.6);
+            font-family: "Segoe UI", sans-serif;
+            min-height: 220px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .info-box h2 {
+            margin: 0 0 8px 0;
+            color: #ff7a7a;
+            font-size: 18px;
+        }
+
+        .info-box p {
+            margin: 0;
+            color: #d8e6ff;
+            line-height: 1.45;
+        }
+
+        @media (max-width: 950px) {
+            .wrapper {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <img src="back of male.png" class="body-img" id="bodyImg">
+
+            <!-- ===== SINGLE SVG (all muscles together) ===== -->
+            <svg viewBox="0 0 400 970">
+                <!-- CALVES -->
+                <path id="leftCalf" d="M123,700 C115,790 111,780 123,797 C195,835 172,770 169,703Z" />
+                <path id="rightCalf" d="M235,705 C229,740 225,799 239,810 C315,810 283,790 285,700Z" />
+</svg>
+                <svg viewBox="0 0 400 560"> <!-- left triceps rotated clockwise 30° -->
+                    <path id="leftTriceps" 
+                    d="M98,90 
+                    C93,100 103,120 113,135 
+                    C138,190 133,70 108,60Z"
+                        transform="rotate(30 110 95)" /> <!-- right triceps rotated anticlockwise 30° -->
+                    <path id="rightTriceps" 
+                    d="M306,60 
+                    C319,100 311,110 301,130 
+                    C273,170 283,55 300,69Z"
+                        transform="rotate(-30 310 95)" />
+                </svg>
+
+        </div>
+
+        <div class="info-box" id="infoBox">
+            <h2>Hover the calves or triceps</h2>
+            <p>Move your mouse over the muscles to learn about them.</p>
+        </div>
+    </div>
+
+    <script>
+        const leftCalf = document.getElementById('leftCalf');
+        const rightCalf = document.getElementById('rightCalf');
+        const leftTriceps = document.getElementById('leftTriceps');
+        const rightTriceps = document.getElementById('rightTriceps');
+        const infoBox = document.getElementById('infoBox');
+
+        function hoverCalves() {
+            leftCalf.classList.add('hovered');
+            rightCalf.classList.add('hovered');
+            infoBox.innerHTML = `<h2>Calves (Gastrocnemius & Soleus)</h2>
+        <p>These muscles help you stand on your toes and push off when walking or running. 
+        They play a major role in ankle movement and stability.</p>`;
+        }
+
+        function hoverTriceps() {
+            leftTriceps.classList.add('hovered');
+            rightTriceps.classList.add('hovered');
+            infoBox.innerHTML = `<h2>Triceps (Triceps Brachii)</h2>
+        <p>These muscles extend your elbows and help stabilize your arms. 
+        They are essential for pushing movements.</p>`;
+        }
+
+        function hoverOff() {
+            [leftCalf, rightCalf, leftTriceps, rightTriceps].forEach(path => path.classList.remove('hovered'));
+            infoBox.innerHTML = `<h2>Hover the calves or triceps</h2>
+        <p>Move your mouse over the muscles to learn about them.</p>`;
+        }
+
+        function clickCalves() { window.open('calves.html', '_blank'); }
+        function clickTriceps() { window.open('triceps.html', '_blank'); }
+
+        [leftCalf, rightCalf].forEach(path => {
+            path.addEventListener('mouseenter', hoverCalves);
+            path.addEventListener('mouseleave', hoverOff);
+            path.addEventListener('click', clickCalves);
+        });
+
+        [leftTriceps, rightTriceps].forEach(path => {
+            path.addEventListener('mouseenter', hoverTriceps);
+            path.addEventListener('mouseleave', hoverOff);
+            path.addEventListener('click', clickTriceps);
+        });
+    </script>
+</body>
+
+</html>

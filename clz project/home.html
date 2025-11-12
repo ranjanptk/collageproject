@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Muscle Trainer Home</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: #f6f6f6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    header {
+      width: 100%;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    header h1 {
+      font-size: 28px;
+      color: #ff4747;
+      margin: 0;
+    }
+
+    .wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      max-width: 1000px;
+      width: 90%;
+      margin-top: 50px;
+      align-items: start;
+    }
+
+    .home-card {
+      background: linear-gradient(180deg, #fff, #ffe0d4);
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(2,6,23,0.1);
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      cursor: pointer;
+    }
+
+    .home-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 35px rgba(2,6,23,0.2);
+    }
+
+    .home-card img {
+      max-width: 120px;
+      margin-bottom: 20px;
+    }
+
+    .home-card h2 {
+      margin: 0 0 12px 0;
+      font-size: 20px;
+      color: #c00000;
+    }
+
+    .home-card p {
+      margin: 0;
+      color: #333;
+      line-height: 1.4;
+    }
+
+    .footer {
+      margin-top: 50px;
+      text-align: center;
+      color: #555;
+      font-size: 14px;
+    }
+
+    /* Responsive */
+    @media (max-width: 850px) {
+      .wrapper {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Muscle Trainer</h1>
+  </header>
+
+  <div class="wrapper">
+    <div class="home-card" onclick="window.open('male.html','_blank')">
+      <img src="male-icon.png" alt="Male">
+      <h2>Male Training</h2>
+      <p>Explore interactive muscle diagrams, exercise tips, and personalized routines for male fitness.</p>
+    </div>
+
+    <div class="home-card" onclick="window.open('female.html','_blank')">
+      <img src="female-icon.png" alt="Female">
+      <h2>Female Training</h2>
+      <p>Explore interactive muscle diagrams, exercise tips, and personalized routines for female fitness.</p>
+    </div>
+
+    <div class="home-card" onclick="window.open('exercise-tips.html','_blank')">
+      <img src="tips-icon.png" alt="Exercise Tips">
+      <h2>Exercise Tips</h2>
+      <p>Get detailed tips and guides for proper form, muscle targeting, and effective workout routines.</p>
+    </div>
+
+    <div class="home-card" onclick="window.open('contact.html','_blank')">
+      <img src="contact-icon.png" alt="Contact">
+      <h2>Contact / Support</h2>
+      <p>Have questions or need help? Reach out to us for support, suggestions, or personalized guidance.</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2025 Muscle Trainer. All rights reserved.
+  </div>
+</body>
+</html>
